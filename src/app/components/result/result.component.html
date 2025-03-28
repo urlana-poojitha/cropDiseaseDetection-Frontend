@@ -1,0 +1,114 @@
+<!-- result.component.html -->
+<div class="result-wrapper">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="spinner"></div>
+    <p>Analyzing your plant image...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="error-state">
+    <svg class="error-icon" viewBox="0 0 24 24">
+      <path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" 
+            fill="#e53935"/>
+    </svg>
+    <p>{{ error }}</p>
+    <button (click)="navigateToUpload()" class="action-button">Try Again</button>
+  </div>
+
+  <!-- Results Display -->
+  <div *ngIf="!isLoading && prediction && image" class="result-container">
+    <div class="header-section">
+      <h1>Plant Health Analysis Report</h1>
+      <p class="timestamp">{{ currentDate | date:'medium' }}</p>
+    </div>
+
+    <div class="content-grid">
+      <!-- Image Section -->
+      <div class="image-section">
+        <h2>Uploaded Image</h2>
+        <div class="image-container">
+          <img [src]="image" alt="Analyzed plant" class="result-image">
+        </div>
+      </div>
+
+      <!-- Diagnosis Section -->
+      <div class="diagnosis-section">
+        <h2>Diagnosis</h2>
+        <div class="diagnosis-card">
+          <div class="disease-name">
+            <h3>{{ formatDiseaseName(prediction.prediction) }}</h3>
+            <span class="confidence-badge {{ getConfidenceColor() }}">
+              {{ prediction.confidence }} confidence
+            </span>
+          </div>
+
+          <div *ngIf="prediction.treatment?.severity" class="severity-indicator">
+            <span>Severity: </span>
+            <span class="severity-badge {{ getSeverityClass(prediction.treatment.severity) }}">
+              {{ prediction.treatment.severity }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Treatment Information -->
+      <div *ngIf="hasTreatmentData()" class="treatment-section">
+        <h2>Treatment Information</h2>
+        
+        <div class="info-cards">
+          <div *ngIf="prediction.treatment?.symptoms" class="info-card">
+            <h3><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Symptoms</h3>
+            <p>{{ prediction.treatment.symptoms }}</p>
+          </div>
+
+          <div *ngIf="prediction.treatment?.causes" class="info-card">
+            <h3><svg class="icon" viewBox="0 0 24 24"><path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/></svg> Causes</h3>
+            <p>{{ prediction.treatment.causes }}</p>
+          </div>
+
+          <div *ngIf="prediction.treatment?.treatment" class="info-card">
+            <h3><svg class="icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg> Treatment</h3>
+            <p>{{ prediction.treatment.treatment }}</p>
+          </div>
+
+          <div *ngIf="prediction.treatment?.prevention" class="info-card">
+            <h3><svg class="icon" viewBox="0 0 24 24"><path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm-1.06 13.54L7.4 12l1.41-1.41 2.12 2.12 4.24-4.24 1.41 1.41-5.64 5.66z"/></svg> Prevention</h3>
+            <p>{{ prediction.treatment.prevention }}</p>
+          </div>
+
+          <div *ngIf="prediction.treatment?.recommended_pesticide" class="info-card">
+            <h3><svg class="icon" viewBox="0 0 24 24"><path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2zm0 15l-5-2.18L7 18V5h10v13z"/></svg> Recommended Pesticide</h3>
+            <p>{{ prediction.treatment.recommended_pesticide }}</p>
+          </div>
+
+          <div *ngIf="prediction.treatment?.organic_treatment" class="info-card">
+            <h3><svg class="icon" viewBox="0 0 24 24"><path d="M12 3c-4.8 0-9 3.86-9 9 0 4.14 4.2 9 9 9 4.8 0 9-3.86 9-9 0-4.14-4.2-9-9-9zm0 16c-3.9 0-7-3.1-7-7s3.1-7 7-7 7 3.1 7 7-3.1 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3V8z"/></svg> Organic Treatment</h3>
+            <p>{{ prediction.treatment.organic_treatment }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Treatment Data -->
+      <div *ngIf="!hasTreatmentData() && prediction.treatment?.message" class="no-treatment">
+        <div class="alert-message">
+          <svg class="alert-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+          <p>{{ prediction.treatment.message }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ... (keep your existing template) -->
+
+    <div class="action-buttons">
+      <button (click)="navigateToUpload()" class="action-button primary">
+        <svg class="button-icon" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+        Analyze Another Image
+      </button>
+      <button (click)="downloadReport()" class="action-button secondary">
+        <svg class="button-icon" viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download Report
+      </button>
+    </div>
+  </div>
+</div>

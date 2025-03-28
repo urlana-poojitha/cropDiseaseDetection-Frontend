@@ -1,0 +1,56 @@
+<!-- image-upload.component.html -->
+<div class="upload-container">
+  <div class="upload-header">
+    
+    <h2>Plant Health Analysis</h2>
+    <p>Upload an image of your plant to analyze its health</p>
+  </div>
+
+  <div class="upload-card">
+    <div class="file-drop-area" [class.active]="isDragging" 
+         (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+      
+      
+      <div *ngIf="!selectedFile" class="upload-instructions">
+        <p class="drag-text">Drag & drop your plant image here</p>
+        <p class="or-text">or</p>
+        <label for="fileInput" class="browse-btn">Browse Files</label>
+        <input id="fileInput" type="file" accept="image/*" (change)="onFileSelected($event)" class="file-input">
+      </div>
+      
+      <div *ngIf="selectedFile" class="file-info">
+        <div class="preview-container">
+          <img [src]="getImagePreview()" alt="Preview" class="image-preview">
+          <div class="file-details">
+            <p class="file-name">{{ selectedFile.name }}</p>
+            <p class="file-size">{{ (selectedFile.size / 1024).toFixed(2) }} KB</p>
+            <button class="change-btn" (click)="clearFile()">Change Image</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="file-requirements">
+      <p>Supported formats: JPG, PNG, WEBP</p>
+      <p>Max file size: 5MB</p>
+    </div>
+  </div>
+  
+  <button class="analyze-btn" (click)="onSubmit()" [disabled]="isLoading || !selectedFile">
+    <span *ngIf="!isLoading">Analyze Plant Health</span>
+    <span *ngIf="isLoading" class="loading-text">
+      <svg class="spinner" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="20" fill="none" stroke="#fff" stroke-width="5"></circle>
+      </svg>
+      Processing...
+    </span>
+  </button>
+  
+  <div *ngIf="errorMessage" class="error-message">
+    <svg class="error-icon" viewBox="0 0 24 24">
+      <path d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" 
+            fill="#e53935"/>
+    </svg>
+    {{ errorMessage }}
+  </div>
+</div>

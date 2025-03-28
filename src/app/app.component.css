@@ -1,0 +1,5 @@
+/* app.component.css */
+app-header, app-footer {
+    display: block; /* Ensure they aren't accidentally hidden */
+  }
+  

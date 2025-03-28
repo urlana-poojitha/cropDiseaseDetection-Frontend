@@ -1,0 +1,79 @@
+<div class="auth-wrapper">
+  <div class="auth-container">
+    <div class="auth-header">
+      <h1>Create Account</h1>
+      <p>Join us today</p>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="input-group">
+        <input 
+          type="text" 
+          id="username" 
+          name="username" 
+          [(ngModel)]="user.username" 
+          required
+          autocomplete="username"
+          placeholder=" "
+        />
+        <label for="username">Username</label>
+        <div class="underline"></div>
+      </div>
+
+      <div class="input-group">
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          [(ngModel)]="user.email" 
+          required
+          autocomplete="email"
+          placeholder=" "
+        />
+        <label for="email">Email</label>
+        <div class="underline"></div>
+      </div>
+
+      <div class="input-group">
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          [(ngModel)]="user.password" 
+          required
+          autocomplete="new-password"
+          placeholder=" "
+        />
+        <label for="password">Password</label>
+        <div class="underline"></div>
+      </div>
+
+      <div class="input-group">
+        <input 
+          type="password" 
+          id="confirmPassword" 
+          name="confirmPassword" 
+          [(ngModel)]="user.confirmPassword" 
+          required
+          autocomplete="new-password"
+          placeholder=" "
+        />
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="underline"></div>
+      </div>
+
+      <button type="submit" class="auth-button">
+        <span>Register</span>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="auth-footer">
+        <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+      </div>
+
+      <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</div>

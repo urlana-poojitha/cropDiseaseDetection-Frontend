@@ -1,0 +1,81 @@
+.navbar {
+    background-color: #2e7d32; /* Green background */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .navbar span {
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar a:hover {
+    color: #a5d6a7; /* Light green on hover */
+  }
+  
+  /* Underline effect for nav links */
+  .navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #a5d6a7;
+    transition: width 0.3s ease;
+  }
+  
+  .navbar a:hover::after {
+    width: 100%;
+  }
+  
+  .navbar button {
+    background-color: #e53935; /* Red logout button */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+  
+  .navbar button:hover {
+    background-color: #c62828; /* Darker red on hover */
+    transform: translateY(-2px);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 1rem;
+    }
+    
+    .navbar span {
+      margin-bottom: 1rem;
+    }
+    
+    .navbar a {
+      margin: 0.5rem 0;
+    }
+    
+    .navbar button {
+      margin-top: 1rem;
+    }
+  }

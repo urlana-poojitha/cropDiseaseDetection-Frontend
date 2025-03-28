@@ -1,0 +1,126 @@
+/* Darkened Color Palette */
+:root {
+  --primary-color: #1e8449;    /* Darker, richer green */
+  --primary-dark: #186138;     /* Deep forest green */
+  --primary-light: #58d68d;    /* Bright accent green */
+  --secondary-color: #e67e22;  /* Earthy orange */
+  --accent-color: #e74c3c;     /* Warm red */
+  --white: #f8f9fa;            /* Off-white */
+  --light-gray: #e9ecef;       /* Light gray */
+  --medium-gray: #dee2e6;      /* Medium gray */
+  --dark-gray: #212529;        /* Dark charcoal */
+  --darker-gray: #1a1e21;      /* Almost black */
+  --text-light: #f8f9fa;       /* Light text */
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Background and Base Styles */
+body {
+  background-color: var(--darker-gray);
+  color: var(--white);
+}
+
+/* Header Styles */
+header {
+  background-color: var(--dark-gray);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav a {
+  color: var(--light-gray);
+}
+
+nav a:hover {
+  color: var(--primary-light);
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, rgba(30, 132, 73, 0.2) 0%, var(--darker-gray) 100%);
+}
+
+.hero-section h1 {
+  color: var(--primary-light);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section p {
+  color: var(--medium-gray);
+}
+
+/* Feature Cards */
+.feature-card {
+  background-color: var(--dark-gray);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card h3 {
+  color: var(--primary-light);
+}
+
+.feature-card p {
+  color: var(--medium-gray);
+}
+
+/* How It Works Section */
+.how-it-works-section {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.step {
+  background-color: var(--dark-gray);
+  border-left: 4px solid var(--primary-color);
+}
+
+.step h4 {
+  color: var(--primary-light);
+}
+
+.step p {
+  color: var(--medium-gray);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Button Adjustments */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #d35400 100%);
+  color: var(--white);
+}
+
+/* Decorative Elements */
+.hero-section::before,
+.hero-section::after,
+.cta-section::before,
+.cta-section::after {
+  background-color: rgba(88, 214, 141, 0.1);
+}
+
+/* Text Contrast Improvements */
+h1, h2, h3, h4 {
+  color: var(--white);
+}
+
+p {
+  color: var(--medium-gray);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .hero-section, 
+  .features-section,
+  .how-it-works-section {
+    padding: 3rem 1rem;
+  }
+}

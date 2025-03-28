@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <div class="navbar-left">
+      <a routerLink="/about">About</a>
+      <a routerLink="/contact">Contact</a>
+    </div>
+    <div class="navbar-right">
+      <span>Welcome, {{ username }}</span>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </nav>
+  

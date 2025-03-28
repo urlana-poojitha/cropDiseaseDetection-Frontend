@@ -1,0 +1,277 @@
+/* result.component.css */
+.result-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Loading State */
+.loading-state {
+  text-align: center;
+  padding: 4rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(76, 175, 80, 0.2);
+  border-radius: 50%;
+  border-top-color: #4CAF50;
+  animation: spin 1s ease-in-out infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error-state {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ffebee;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.error-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1rem;
+}
+
+/* Header Section */
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header-section h1 {
+  color: #2e7d32;
+  margin-bottom: 0.5rem;
+}
+
+.timestamp {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Content Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Image Section */
+.image-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.image-container {
+  margin-top: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+.result-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Diagnosis Section */
+.diagnosis-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.diagnosis-card {
+  margin-top: 1rem;
+}
+
+.disease-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.disease-name h3 {
+  margin: 0;
+  color: #333;
+  font-size: 3rem;
+}
+
+.confidence-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.high-confidence {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.medium-confidence {
+  background-color: #fff8e1;
+  color: #ff8f00;
+  margin: 2rem;
+}
+
+.low-confidence {
+  background-color: #ffebee;
+  color: #e53935;
+}
+
+.severity-indicator {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.severity-badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.severity-high {
+  background-color: #ffebee;
+  color: #e53935;
+}
+
+.severity-medium {
+  background-color: #fff8e1;
+  color: #ff8f00;
+}
+
+.severity-low {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.severity-unknown {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+/* Treatment Section */
+.treatment-section {
+  grid-column: 1 / -1;
+}
+
+.treatment-section h2 {
+  margin-bottom: 1.5rem;
+  color: #2e7d32;
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #4CAF50;
+}
+
+.info-card h3 {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: #4CAF50;
+}
+
+/* No Treatment Data */
+.no-treatment {
+  grid-column: 1 / -1;
+}
+
+.alert-message {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background-color: #fff8e1;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.alert-icon {
+  width: 24px;
+  height: 24px;
+  fill: #ff8f00;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+}
+
+.primary:hover {
+  background-color: #3d8b40;
+}
+
+.secondary {
+  background-color: white;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+}
+
+.secondary:hover {
+  background-color: #f1f8e9;
+}
+
+.button-icon {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
