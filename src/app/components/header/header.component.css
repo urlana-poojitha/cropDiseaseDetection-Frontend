@@ -1,81 +1,94 @@
-.navbar {
-    background-color: #2e7d32; /* Green background */
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.simple-header {
+  background: white;
+  position: fixed;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  z-index: 1000;
+  width: 100%;
+  top: 0%;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  height: 32px;
+  width: auto;
+}
+
+.app-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  background: linear-gradient(to right, #228B22, #34a853);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.auth-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.login-btn {
+  background: transparent;
+  color: #228B22;
+  border: 1px solid #228B22;
+}
+
+.login-btn:hover {
+  background: rgba(34, 139, 34, 0.1);
+}
+
+.register-btn {
+  background: #228B22;
+  color: white;
+}
+
+.register-btn:hover {
+  background: #1e7b1e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(34, 139, 34, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .header-content {
+    padding: 0.5rem;
   }
   
-  .navbar span {
-    color: white;
-    font-weight: 500;
-    font-size: 1rem;
+  .app-title {
+    font-size: 1.25rem;
   }
   
-  .navbar a {
-    color: white;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-size: 0.9rem;
-    padding: 0.5rem 0;
-    position: relative;
-    transition: color 0.3s ease;
+  .auth-buttons {
+    gap: 0.5rem;
   }
   
-  .navbar a:hover {
-    color: #a5d6a7; /* Light green on hover */
-  }
-  
-  /* Underline effect for nav links */
-  .navbar a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #a5d6a7;
-    transition: width 0.3s ease;
-  }
-  
-  .navbar a:hover::after {
-    width: 100%;
-  }
-  
-  .navbar button {
-    background-color: #e53935; /* Red logout button */
-    color: white;
-    border: none;
+  .auth-btn {
     padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
+    font-size: 0.8rem;
   }
-  
-  .navbar button:hover {
-    background-color: #c62828; /* Darker red on hover */
-    transform: translateY(-2px);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      padding: 1rem;
-    }
-    
-    .navbar span {
-      margin-bottom: 1rem;
-    }
-    
-    .navbar a {
-      margin: 0.5rem 0;
-    }
-    
-    .navbar button {
-      margin-top: 1rem;
-    }
-  }
+}

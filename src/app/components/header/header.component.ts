@@ -1,25 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  standalone: true,
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  username: string = '';
+  username: string | null = null; // Replace with actual user data
+  menuActive: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit() {
-    this.username = this.authService.getUsername(); // get from service or localStorage
+  constructor(private router: Router) {
+    // Example: Get username from auth service
+    // this.username = this.authService.getUsername();
   }
 
-  logout() {
-    this.authService.logout();
+  toggleMenu(): void {
+    this.menuActive = !this.menuActive;
+  }
+
+  logout(): void {
+    // Implement logout logic
+    // this.authService.logout();
+    this.username = null;
     this.router.navigate(['/login']);
+  }
+
+  logoutAndClose(): void {
+    this.logout();
+    this.menuActive = false;
   }
 }

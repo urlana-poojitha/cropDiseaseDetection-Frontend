@@ -1,69 +1,94 @@
-<header>
-    <nav>
-      <a routerLink="/login">Login</a>
-      <a routerLink="/register">Register</a>
-    </nav>
-  </header>
-  
-  <div class="home-container">
-    <!-- Hero Section -->
-    <div class="hero-section">
-      <h1>Welcome to Crop Disease Detection System</h1>
-      <p>Upload crop images to detect diseases using AI!</p>
-      <button routerLink="login" class="btn-primary">Get Started</button>
+<div class="home-container">
+  <!-- Features Section -->
+  <section class="features-section" id="features">
+    <div class="section-header">
+      <h2 class="section-title">Why Choose Our System?</h2>
+      <p class="section-subtitle">Advanced plant healthcare at your fingertips</p>
     </div>
-  
-    <!-- Features Section -->
-    <div class="features-section">
-      <h2>Why Use Our System?</h2>
-      <div class="features">
-        <div class="feature-card">
-          <img src="assets/ai.png" alt="AI Powered">
-          <h3>AI Powered Detection</h3>
-          <p>Utilizes advanced machine learning algorithms to analyze and detect crop diseases accurately.</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/ai.step.png" alt="AI Powered" class="icon-img">
+          <div class="icon-bg"></div>
         </div>
-  
-        <div class="feature-card">
-          <img src="assets/report.png" alt="Detailed Reports">
-          <h3>Detailed Reports</h3>
-          <p>Receive comprehensive analysis and actionable insights to improve your crop health.</p>
+        <h3>AI Powered Detection</h3>
+        <p>Our deep learning model identifies 50+ plant diseases with 95% accuracy using advanced computer vision.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+           <img src="assets/report-step.png" alt="Detailed Reports" class="icon-img"> 
+          <div class="icon-bg"></div>
         </div>
-  
-        <div class="feature-card">
-          <img src="assets/secure.png" alt="Secure">
-          <h3>Secure and Reliable</h3>
-          <p>We value your data privacy. All data is securely stored and processed.</p>
+        <h3>Comprehensive Reports</h3>
+        <p>Get detailed analysis with treatment recommendations, prevention tips, and organic solutions.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">
+          <img src="assets/secure-icon.png" alt="Secure" class="icon-img">
+          <div class="icon-bg"></div>
         </div>
+        <h3>Secure & Private</h3>
+        <p>Your data is encrypted and never shared. We comply with global agricultural data standards.</p>
       </div>
     </div>
-  
-    <!-- How It Works Section -->
-    <div class="how-it-works-section">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <span>1</span>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="process-section">
+    <div class="section-header">
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-subtitle">Three simple steps to healthier plants</p>
+    </div>
+    
+    <div class="process-steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <img src="assets/upload-step.png" alt="Upload Image" class="step-image">
           <h4>Upload Image</h4>
-          <p>Select and upload a clear image of the affected crop.</p>
-        </div>
-        <div class="step">
-          <span>2</span>
-          <h4>AI Analysis</h4>
-          <p>Our AI model will analyze the image and detect possible diseases.</p>
-        </div>
-        <div class="step">
-          <span>3</span>
-          <h4>Get Report</h4>
-          <p>Receive a detailed report with recommendations for treatment.</p>
+          <p>Capture clear photos of affected leaves using your smartphone or upload existing images.</p>
         </div>
       </div>
+      
+      <div class="step-card middle">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <img src="assets/analysis-step.png" alt="AI Analysis" class="step-image">
+          <h4>AI Analysis</h4>
+          <p>Our system processes your image through multiple neural networks for accurate diagnosis.</p>
+        </div>
+      </div>
+      
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <img src="assets/report-icon.png" alt="Get Report" class="step-image">
+          <h4>Get Report</h4>
+          <p>Receive instant results with treatment options, preventive measures, and expert advice.</p>
+        </div>
+      </div>
+      
+      <div class="process-line"></div>
     </div>
-  
-    <!-- Call to Action Section -->
-    <div class="cta-section">
-      <h2>Start Improving Your Crop Health Today!</h2>
-      <button routerLink="register" class="btn-secondary">Register Now</button>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <div class="cta-content">
+        <h2>Ready to Protect Your Crops?</h2>
+        <p>Join thousands of farmers and gardeners using our AI-powered plant healthcare system.</p>
+        <div class="cta-buttons">
+          <button routerLink="/register" class="btn-primary">Get Started Free</button>
+          <button routerLink="/demo" class="btn-outline">See Live Demo</button>
+        </div>
+      </div>
+      <div class="cta-image">
+        <img src="assets/secure.png" alt="Healthy plants" class="plant-img">
+      </div>
     </div>
-  </div>
-  
-  
+  </section>
+</div>
